@@ -8,11 +8,6 @@ export const App = () => {
     setNum(num => num +1);
   };
   
-  const contentPinkStyle = {
-    color: "pink",
-    fontSize: "20px"
-  }
-
   return (
     <>
       <h1>こんにちは！</h1>
