@@ -1,21 +1,25 @@
-import { useState } from "react";
-import { ColoredMessage } from "./components/ColoredMessage";
+import { useState, memo, useCallback } from "react";
+import { Child1 } from "./components/Child1";
+import { Child4 } from "./components/Child4";
 
-export const App = () => {
+export const App = memo(() => {
+  console.log("Appレンダリング")
   const [num, setNum] = useState(0);
 
   const onClickButton = () => {
     setNum(num => num +1);
   };
   
+  const onClickReset = useCallback(() => {
+    setNum(0);
+  }, []);
+  
   return (
     <>
-      <h1>こんにちは！</h1>
-      <ColoredMessage color="blue">how are you</ColoredMessage>
-      <ColoredMessage color="green">i'm ok</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
       <p>{num}</p>
+      <Child1 onClickReset={onClickReset} />
+      <Child4 />
     </>
   );
-};
-
+});
